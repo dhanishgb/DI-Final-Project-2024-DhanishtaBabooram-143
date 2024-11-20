@@ -3,76 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Fitness Planet</title>
-    <link rel="stylesheet" type="text/css" href="admin.css">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="Admin.css">
 </head>
 <body>
-
-    <!-- Header -->
     <header class="admin-header">
         <div class="container">
-            <a href="index.html" class="logo-link">
-                <h1 class="logo">Fitness Planet Admin</h1>
-            </a>
+            <h1>Admin Dashboard</h1>
             <nav class="admin-nav">
-                <ul class="nav-list">
-                    <li><a href="admin_dashboard.html">Dashboard</a></li>
-                    <li><a href="manage_users.html">Manage Users</a></li>
-                    <li><a href="manage_trainers.html">Manage Trainers</a></li>
-                    <li><a href="manage_programs.html">Manage Programs</a></li>
-                    <li><a href="manage_bookings.html">Manage Bookings</a></li>
-                    <li><a href="manage_purchases.html">Manage Purchases</a></li>
-                </ul>
+                <a href="index.html">Home</a>
+                <a href="#programs-section">Programs</a>
+                <a href="#purchases-section">Purchases</a>
+                <a href="logout.html">Logout</a>
             </nav>
-            <div class="auth-buttons">
-                <a href="admin_profile.html" class="btn profile">Profile</a>
-                <a href="logout.html" class="btn logout">Logout</a>
-            </div>
         </div>
     </header>
 
-    <!-- Admin Dashboard Section -->
-    <section class="dashboard">
-        <div class="container">
-            <h2>Welcome, Admin!</h2>
-            <p>Manage all aspects of the Fitness Planet system here.</p>
+    <main class="admin-main">
+        <!-- Programs Section -->
+        <section id="programs-section" class="admin-section">
+            <h2>Manage Programs</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Price (MUR)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example data; dynamically populate with backend -->
+                    <tr>
+                        <td>1</td>
+                        <td>Yoga Basics</td>
+                        <td>2024-10-20</td>
+                        <td>1500.00</td>
+                        <td>
+                            <button class="btn edit">Edit</button>
+                            <button class="btn delete">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="admin-form">
+                <h3>Add/Update Program</h3>
+                <input type="text" placeholder="Program Name" required>
+                <input type="date" required>
+                <input type="number" placeholder="Price (MUR)" required>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </section>
 
-            <div class="dashboard-cards">
-                <div class="card">
-                    <h3>Users</h3>
-                    <p>View, edit, and manage users.</p>
-                    <a href="manage_users.html" class="btn">Manage Users</a>
-                </div>
-                <div class="card">
-                    <h3>Trainers</h3>
-                    <p>Manage trainer profiles and availability.</p>
-                    <a href="manage_trainers.html" class="btn">Manage Trainers</a>
-                </div>
-                <div class="card">
-                    <h3>Programs</h3>
-                    <p>Create and update workout programs.</p>
-                    <a href="manage_programs.html" class="btn">Manage Programs</a>
-                </div>
-                <div class="card">
-                    <h3>Bookings</h3>
-                    <p>Review and manage user bookings.</p>
-                    <a href="manage_bookings.html" class="btn">Manage Bookings</a>
-                </div>
-                <div class="card">
-                    <h3>Purchases</h3>
-                    <p>Track purchases and subscriptions.</p>
-                    <a href="manage_purchases.html" class="btn">Manage Purchases</a>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Purchases Section -->
+        <section id="purchases-section" class="admin-section">
+            <h2>Manage Purchases</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Customer Name</th>
+                        <th>Program</th>
+                        <th>Date</th>
+                        <th>Amount (MUR)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example data; dynamically populate with backend -->
+                    <tr>
+                        <td>1</td>
+                        <td>John Doe</td>
+                        <td>Yoga Basics</td>
+                        <td>2024-10-21</td>
+                        <td>1500.00</td>
+                        <td>
+                            <button class="btn edit">Edit</button>
+                            <button class="btn delete">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form class="admin-form">
+                <h3>Add/Update Purchase</h3>
+                <input type="text" placeholder="Customer Name" required>
+                <input type="text" placeholder="Program" required>
+                <input type="date" required>
+                <input type="number" placeholder="Amount (MUR)" required>
+                <button type="submit" class="btn">Submit</button>
+            </form>
+        </section>
+    </main>
 
-    <!-- Footer -->
     <footer class="admin-footer">
         <div class="container">
-            <p>&copy; 2024 Fitness Planet. Admin Dashboard. All Rights Reserved.</p>
+            <p>&copy; 2024 Fitness Planet Admin. All rights reserved.</p>
         </div>
     </footer>
-
 </body>
 </html>
