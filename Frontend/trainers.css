@@ -1,0 +1,97 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+/* Header Styles */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background-color: #1a1a1a;
+}
+
+.header .logo {
+    color: #ffc107;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.header .nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.header .nav a:hover {
+    color: #ffc107;
+}
+
+/* Trainers Section */
+.trainers-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.trainers-container h1 {
+    color: #ffc107;
+    margin-bottom: 30px;
+    font-size: 36px;
+}
+
+/* Trainer Grid */
+.trainer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Trainer Card */
+.trainer-card {
+    background-color: #1a1a1a;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.trainer-card:hover {
+    transform: scale(1.05);
+}
+
+.trainer-card img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 15px;
+}
+
+.trainer-card h2 {
+    margin: 15px 0;
+    font-size: 24px;
+    color: #ffc107;
+}
+
+.trainer-card p {
+    margin-bottom: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .trainers-container {
+        padding: 0 10px;
+    }
+}
