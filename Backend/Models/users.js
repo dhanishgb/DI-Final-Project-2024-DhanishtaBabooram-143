@@ -1,5 +1,9 @@
-const { DataTypes } = require('sequelize');
-const db = require('../database');// database connection object
+//import Database
+
+//import { Sequelize, DataTypes } from 'sequelize';
+const { Sequelize, DataTypes } = require('sequelize');
+
+const db = new Sequelize('postgresql://class143_owner:BThOV0lZb3YU@ep-holy-lab-a2xm39f8.eu-central-1.aws.neon.tech/FitnessPlanet?sslmode=require');
 
 const User = db.define('User', {
     id: {

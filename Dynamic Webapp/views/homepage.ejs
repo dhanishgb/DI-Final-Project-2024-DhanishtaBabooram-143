@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Planet</title>
+    <link rel="stylesheet" type="text/css" href="/homepage.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Fitness Planet</h1>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/trainers">Trainers</a></li>
+                    <li><a href="/programs">Programs</a></li>
+                    <li><a href="/my_bookings">My Bookings</a></li>
+                    <li><a href="/my_purchases">My Purchases</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <% if (user) { %>
+                    <p>Welcome, <%= user.name %>!</p>
+                    <a href="/logout" class="btn logout">Log Out</a>
+                <% } else { %>
+                    <a href="/signin" class="btn sign-in">Sign In</a>
+                    <a href="/register" class="btn register">Register</a>
+                <% } %>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Welcome to Fitness Planet</h1>
+            <p>Your journey to a healthier and fitter lifestyle starts here.</p>
+            <a href="/learn_more" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>Our Aim</h2>
+            <p>We are dedicated to helping you achieve your fitness goals. With expert trainers and state-of-the-art facilities, we offer personalized training plans to suit your needs.</p>
+        </div>
+    </section>
+
+    <!-- Trainers Section -->
+    <section class="trainers" id="trainers">
+        <div class="container">
+            <h2>Our Trainers</h2>
+            <div class="trainer-grid">
+                <div class="trainer">
+                    <img src="https://images.pexels.com/photos/3912944/pexels-photo-3912944.jpeg" alt="Trainer 1">
+                    <h3>John Doe</h3>
+                    <p>Strength Trainer</p>
+                </div>
+                <div class="trainer">
+                    <img src="https://images.pexels.com/photos/3094215/pexels-photo-3094215.jpeg" alt="Trainer 2">
+                    <h3>Jane Smith</h3>
+                    <p>Yoga Instructor</p>
+                </div>
+                <div class="trainer">
+                    <img src="https://images.pexels.com/photos/8745176/pexels-photo-8745176.jpeg" alt="Trainer 3">
+                    <h3>Michael Lee</h3>
+                    <p>Cardio Coach</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Fitness Planet. All Rights Reserved. @dhanishgb</p>
+        </div>
+    </footer>
+
+</body>
+</html>
