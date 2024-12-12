@@ -29,7 +29,7 @@ app.set('view engine', 'ejs');
 // Middleware to check if user is signed in
 const isAuthenticated = (req, res, next) => {
     if (req.session && req.session.user) {
-        next();
+        next(); // Proceed if the user is authenticated
     } else {
         res.redirect('/signin'); // Redirect to sign-in page if not authenticated
     }
@@ -45,6 +45,11 @@ app.get('/', (req, res) => {
     res.render('homepage', { user });     // Pass user data to EJS template
 });
 
+// Dashboard or Authenticated Homepage (Private)
+app.get('/dashboard', isAuthenticated, (req, res) => {
+    const user = req.session.user; // Retrieve user data from session
+    res.render('dashboard', { user });   // Render the authenticated homepage
+});
 
 // Start the Server
 const PORT = 8000;
