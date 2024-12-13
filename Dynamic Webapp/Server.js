@@ -7,6 +7,7 @@ const session = require('express-session');
 const signinRoutes = require('./routes/signin');
 const registerRoutes = require('./routes/register');
 
+
 const app = express();
 
 // Session Middleware
@@ -50,6 +51,31 @@ app.get('/dashboard', isAuthenticated, (req, res) => {
     const user = req.session.user; // Retrieve user data from session
     res.render('dashboard', { user });   // Render the authenticated homepage
 });
+
+const aboutRoutes = require('./routes/about'); // Ensure the correct path to the 'about.js' file
+app.use('/about', aboutRoutes);
+
+const learnMoreRoutes = require('./routes/learn_more');
+app.use('/learn_more', learnMoreRoutes); // Register the Learn More route
+
+// Route for the homepage
+app.get('/', (req, res) => {
+    const user = req.session.user || null; // Get user from session
+    res.render('homepage', { user });  // Pass user data if available
+});
+
+// Route for My Purchases
+app.get('/my_purchases', (req, res) => {
+    const user = req.session.user || null; // Get user from session
+    res.render('my_purchases', { user }); // Render the my_purchases page with user data
+});
+
+const trainersRoutes = require('./routes/trainers'); // Import Trainers route
+app.use('/trainers', trainersRoutes); // Register trainers route
+
+// Routes
+const programsRoutes = require('./routes/my_programs'); // Import my_programs route
+app.use('/my_programs', programsRoutes); // Register my_programs route
 
 // Start the Server
 const PORT = 8000;
