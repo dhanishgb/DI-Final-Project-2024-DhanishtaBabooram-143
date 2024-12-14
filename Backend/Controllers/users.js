@@ -10,7 +10,7 @@ exports.login = async(request, reply) => {
     })
     .then((user) => {
         if(user){
-            reply.json({"message": "Login successful"});
+            reply.json({"message": "Login successful", "user": user});
         }
         else{
             reply.json({"message": "Invalid credentials"});
