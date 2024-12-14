@@ -7,18 +7,34 @@ router.get('/', (req, res) => {
 });
 
 // Handle form submission (POST request)
-router.post('/', (req, res) => {
-    const { email, password } = req.body;
+router.post('/', async (req, res) => {
+    // console.log(req.body);
 
-    // Example: Authentication logic (replace with actual logic, e.g., database check)
-    if (email === 'test@example.com' && password === '12345') {
-        // Save user info in session
-        req.session.user = { name: 'John Doe', email }; // Replace with actual user data
-        res.redirect('/'); // Redirect to homepage or dashboard
-    } else {
-        // Render signin page with an error message
-        res.render('signin', { error: 'Invalid email or password. Please try again.' });
+    const response = await fetch("http://localhost:3000/api/users/login", {
+        method: "POST",
+        body: JSON.stringify({
+            username: req.body.username,
+            password: req.body.password
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      });
+
+    const data = await response.json(); // parse JSON
+    console.log(data);
+
+    if (data['message']=="Login successful"){
+        // res.send('Login succesful');
+        req.session.user=data.user;
+
+        res.redirect('/dashboard');
+    }else{
+        res.send('Login unsuccesful');
     }
+
+
+
 });
 
 module.exports = router;
