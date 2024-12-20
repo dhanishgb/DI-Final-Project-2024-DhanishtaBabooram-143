@@ -8,34 +8,30 @@ router.get('/', (req, res) => {
 
 // Handle form submission (POST request)
 router.post('/', async (req, res) => {
-    // console.log(req.body);
+    try {
+        const response = await fetch("http://localhost:3000/api/users/signin", {
+            method: "POST",
+            body: JSON.stringify({
+                email: req.body.email,
+                password: req.body.password,
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8",
+            },
+        });
 
-    const response = await fetch("http://localhost:3000/api/users/login", {
-        method: "POST",
-        body: JSON.stringify({
-            username: req.body.username,
-            password: req.body.password
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
+        const data = await response.json();
 
-    const data = await response.json(); // parse JSON
-    console.log(data);
-
-    if (data['message']=="Login successful"){
-        // res.send('Login succesful');
-        req.session.user=data.user;
-
-        res.redirect('/dashboard');
-    }else{
-        res.send('Login unsuccesful');
+        if (response.ok && data.message === "Signin successful") {
+            req.session.user = data.user;
+            res.redirect('/dashboard');
+        } else {
+            res.render('signin', { error: data.message || "Invalid credentials" });
+        }
+    } catch (error) {
+        console.error("Error during signin:", error);
+        res.render('signin', { error: "Server error, please try again later" });
     }
-
-
-
 });
 
 module.exports = router;
-

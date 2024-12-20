@@ -1,6 +1,5 @@
 const express=require('express');
 
-//const PostgresDialect=require('sequelize/lib/dialects/postgres');
 
 //import routes
 const users_routes=require('./Routes/users');

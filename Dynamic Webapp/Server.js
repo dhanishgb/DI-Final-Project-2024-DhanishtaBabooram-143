@@ -7,7 +7,6 @@ const session = require('express-session');
 const signinRoutes = require('./routes/signin');
 const registerRoutes = require('./routes/register');
 
-
 const app = express();
 
 // Session Middleware
@@ -52,17 +51,22 @@ app.get('/dashboard', isAuthenticated, (req, res) => {
     res.render('dashboard', { user });   // Render the authenticated homepage
 });
 
+// Route for logout
+app.get('/logout', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            return res.status(500).json({ message: 'Could not log out', error: err });
+        }
+        // Redirect to the homepage after logging out
+        res.redirect('/');
+    });
+});
+
 const aboutRoutes = require('./routes/about'); // Ensure the correct path to the 'about.js' file
 app.use('/about', aboutRoutes);
 
 const learnMoreRoutes = require('./routes/learn_more');
 app.use('/learn_more', learnMoreRoutes); // Register the Learn More route
-
-// Route for the homepage
-app.get('/', (req, res) => {
-    const user = req.session.user || null; // Get user from session
-    res.render('homepage', { user });  // Pass user data if available
-});
 
 // Route for My Purchases
 app.get('/my_purchases', (req, res) => {

@@ -40,3 +40,28 @@ exports.allUsers = async(request, reply) => {
     data= await Users.findAll();
     reply.json({"message": data});
 };
+
+const User = require('../models/users'); // Ensure this path is correct
+
+exports.login = async (req, res) => {
+    const { email, password } = req.body;
+
+    try {
+        const user = await User.findOne({ where: { email } });
+
+        if (!user || user.password !== password) {
+            return res.status(401).json({ message: 'Invalid credentials' });
+        }
+
+        // Send user data back to the frontend
+        res.json({
+            message: 'User logged in successfully',
+            user: {
+                name: user.name,
+                email: user.email,
+            },
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error });
+    }
+};
