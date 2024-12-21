@@ -81,6 +81,12 @@ app.use('/trainers', trainersRoutes); // Register trainers route
 const programsRoutes = require('./routes/my_programs'); // Import my_programs route
 app.use('/my_programs', programsRoutes); // Register my_programs route
 
+// Route for My Bookings
+app.get('/my_bookings', isAuthenticated, (req, res) => {
+    const user = req.session.user || null; // Get user from session
+    res.render('my_bookings', { user }); // Render the my_bookings page with user data
+});
+
 // Start the Server
 const PORT = 8000;
 app.listen(PORT, () => {
